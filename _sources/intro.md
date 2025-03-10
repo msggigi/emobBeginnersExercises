@@ -1,8 +1,12 @@
 # Welcome to your Emobility Exercises
 
 ## Techniques used
-* Jupyter notebook
-    * that is converted to Jupyter-book and published with Github Pages
+* Publishing: Jupyter-book 
+    * published with Github Pages script ghp-import
+* Jupyther Notebook 
+* Implementation: NumPy
+    * Visualization: Matplotlib
+
 
 ## Build instructions
 It is build with following
