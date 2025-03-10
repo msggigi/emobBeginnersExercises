@@ -1,11 +1,21 @@
-# Welcome to your Jupyter Book
+# Welcome to your Emobility Exercises
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+## Techniques used
+* Jupyter notebook
+** that is converted to Jupyter-book and published with Github Pages
 
-Check out the content pages bundled with this sample book to see more.
+## Build instructions
+It is build with following
+´´´
+    jb build --path-output _build notebooks/
+    ghp-import -n -p -f _build/_build/html/
+´´´
+
+## Useful Links
+
+- [Jupyter Book documentation](https://jupyterbook.org) 
+- [githubpages Import](https://github.com/c-w/ghp-import)
+
 
 ```{tableofcontents}
 ```

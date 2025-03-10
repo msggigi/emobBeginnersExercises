@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'exercise1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Welcome to your Jupyter Book" href="intro.html" />
+    <link rel="prev" title="Welcome to your Emobility Exercises" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -168,7 +168,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Welcome to your Jupyter Book
+                    Welcome to your Emobility Exercises
                 </a>
             </li>
         </ul>
@@ -413,29 +413,33 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">700</span>  <span class="c1"># WErt für das Drehmoment</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">400</span>  <span class="c1"># WErt für das Drehmoment</span>
 <span class="n">n_1</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Wert für die Drehzahl</span>
-<span class="n">o</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">n_1</span><span class="o">/</span><span class="mi">60</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;omega = </span><span class="si">{</span><span class="n">o</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">omega_nominal</span> <span class="o">=</span> <span class="mi">750</span>  <span class="c1"># Beispielwert für die Nenndrehzahl in rad/s</span>
-<span class="n">V_dc1</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># Beispielwert für die DC-Link-Spannung</span>
+<span class="n">o1</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">n_1</span><span class="o">/</span><span class="mi">60</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;omega1 = </span><span class="si">{</span><span class="n">o1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">omega_nominal</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># Beispielwert für die Nenndrehzahl in rad/s</span>
+<span class="n">V_dc1</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># DC-Link-Spannung</span>
 <span class="n">V_dc2</span> <span class="o">=</span> <span class="mi">420</span>  <span class="c1"># Erhöhte DC-Link-Spannung</span>
 
 <span class="c1"># Bereich der Drehzahl</span>
 <span class="n">omega</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="c1"># Berechnung des Drehmoments für die erste DC-Link-Spannung</span>
-<span class="n">T1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">omega</span> <span class="o">&lt;=</span> <span class="n">omega_nominal</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V_dc1</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="mf">0.00075</span><span class="p">))</span>
+<span class="n">o_factor</span> <span class="o">=</span> <span class="n">V_dc1</span> <span class="o">/</span> <span class="p">(</span><span class="n">o1</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>                                                     
+<span class="n">T1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">omega</span> <span class="o">&lt;=</span> <span class="n">omega_nominal</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V_dc1</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">o_factor</span><span class="p">))</span>
 
 <span class="c1"># Berechnung des Drehmoments für die erhöhte DC-Link-Spannung</span>
-<span class="n">T2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">omega</span> <span class="o">&lt;=</span> <span class="n">omega_nominal</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V_dc2</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="mf">0.00075</span><span class="p">))</span>
+<span class="n">o2</span> <span class="o">=</span> <span class="n">V_dc2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">o_factor</span><span class="p">)</span>
+<span class="n">n_2</span> <span class="o">=</span> <span class="n">o2</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;omega2 = </span><span class="si">{</span><span class="n">o2</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">omega</span> <span class="o">&lt;=</span> <span class="n">omega_nominal</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V_dc2</span> <span class="o">/</span> <span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">o_factor</span><span class="p">))</span>
 
 <span class="c1"># Plotten des Drehmoments gegen die Drehzahl</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drehmoment bei V_dc = 300V&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="n">T2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Drehmoment bei V_dc = 420V&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;M = 100Nm&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">o</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n = </span><span class="si">{</span><span class="n">n_1</span><span class="si">}</span><span class="s1"> at U_dc = </span><span class="si">{</span><span class="n">V_dc1</span><span class="si">}</span><span class="s1">V&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">1450</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;n = 1450 at U_dc = 420V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">o1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n = </span><span class="si">{</span><span class="n">n_1</span><span class="si">}</span><span class="s1"> at U_dc = </span><span class="si">{</span><span class="n">V_dc1</span><span class="si">}</span><span class="s1">V&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">o2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;n = </span><span class="si">{</span><span class="n">n_2</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1"> at U_dc = </span><span class="si">{</span><span class="n">V_dc2</span><span class="si">}</span><span class="s1">V&#39;</span><span class="p">)</span>
 <span class="c1"># Diagramm beschriften</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Drehzahl [rad/s]&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Drehmoment [Nm]&#39;</span><span class="p">)</span>
@@ -447,10 +451,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>omega = 5235.987755982988
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>omega1 = 5236.0
+omega2 = 7330.4
 </pre></div>
 </div>
-<img alt="_images/b27c2d5e18257607a232e7b82c7b718d6145ab9fbda62837de0afbd3731d2740.png" src="_images/b27c2d5e18257607a232e7b82c7b718d6145ab9fbda62837de0afbd3731d2740.png" />
+<img alt="_images/8a504e5a279a27bcee744f4ff485161e98221bd367659c3a4542e75fbb13b94d.png" src="_images/8a504e5a279a27bcee744f4ff485161e98221bd367659c3a4542e75fbb13b94d.png" />
 </div>
 </div>
 </section>
@@ -492,7 +497,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        <p class="prev-next-title">Welcome to your Emobility Exercises</p>
       </div>
     </a>
 </div>
