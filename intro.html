@@ -343,17 +343,20 @@ document.write(`
 <section id="techniques-used">
 <h2>Techniques used<a class="headerlink" href="#techniques-used" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Jupyter notebook
-** that is converted to Jupyter-book and published with Github Pages</p></li>
+<li><p>Jupyter notebook</p>
+<ul>
+<li><p>that is converted to Jupyter-book and published with Github Pages</p></li>
+</ul>
+</li>
 </ul>
 </section>
 <section id="build-instructions">
 <h2>Build instructions<a class="headerlink" href="#build-instructions" title="Link to this heading">#</a></h2>
-<p>It is build with following
-´´´
-jb build –path-output _build notebooks/
+<p>It is build with following</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jb build --path-output _build notebooks/
 ghp-import -n -p -f _build/_build/html/
-´´´</p>
+</pre></div>
+</div>
 </section>
 <section id="useful-links">
 <h2>Useful Links<a class="headerlink" href="#useful-links" title="Link to this heading">#</a></h2>
